@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
+   uuid = "B6EBA4B9-19B2-430D-8DC4-DEC46BCD8AC6"
    type = "1"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "4D664F69-312A-430B-9FBD-21D299A4C72B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -15,13 +17,14 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
             endingLineNumber = "43"
-            landmarkName = "solution(vector&lt;vector&lt;int&gt;&gt; key, vector&lt;vector&lt;int&gt;&gt; lock)"
+            landmarkName = "solution(key, lock)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "2C379364-3838-49EB-819F-6A62707FE995"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -31,13 +34,14 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
             endingLineNumber = "24"
-            landmarkName = "solution(vector&lt;vector&lt;int&gt;&gt; key, vector&lt;vector&lt;int&gt;&gt; lock)"
+            landmarkName = "solution(key, lock)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "3E406F39-6B53-4150-A863-1C71BE706534"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -47,13 +51,14 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
             endingLineNumber = "36"
-            landmarkName = "solution(vector&lt;vector&lt;int&gt;&gt; key, vector&lt;vector&lt;int&gt;&gt; lock)"
+            landmarkName = "solution(key, lock)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "02FF2CCE-EEE1-43B8-A7B8-E2ED361E4D57"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -63,13 +68,14 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
             endingLineNumber = "54"
-            landmarkName = "solution(vector&lt;vector&lt;int&gt;&gt; key, vector&lt;vector&lt;int&gt;&gt; lock)"
+            landmarkName = "solution(key, lock)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "5C5B4BAA-029E-4CE8-9F32-4712EBDF82D0"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -79,7 +85,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
             endingLineNumber = "41"
-            landmarkName = "solution(vector&lt;vector&lt;int&gt;&gt; key, vector&lt;vector&lt;int&gt;&gt; lock)"
+            landmarkName = "solution(key, lock)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

@@ -35,7 +35,7 @@ json::value makeJson(int id, int command, int call_id=-1) {
 int main(int argc, char* argv[]) {
     //start
     string token = "";
-    http_client client_post(U("http://localhost:8000/start/tester/2/1"));
+    http_client client_post(U("http://localhost:8000/start/tester/1/1"));
     json::value value = client_post.request(methods::POST).get().extract_json(true).get();
     token = value.at("token").as_string().c_str();
     
@@ -48,6 +48,7 @@ int main(int argc, char* argv[]) {
     request_action.headers().add("X-Auth-Token", token);
     request_action.headers().add("Content-Type","application/json");
     
+    int dir=0;    // 0 : up, 1 : down;
     while(1) {
         //oncall
         value = client_get.request(request_get).get().extract_json(true).get();
@@ -56,78 +57,138 @@ int main(int argc, char* argv[]) {
         json::array elevators = value.at("elevators").as_array();
         json::array calls = value.at("calls").as_array();
         printf("calls size : %d\n", (int)calls.size());
-        if ((int)calls.size()==0 && elevators[0].at("passengers").size()==0) {
-            json::value command = makeJson(0, 0);  // stop
-            json::value commands; commands[0] = command;
-            json::value action; action["commands"]=commands;
-            request_action.set_body(action);
-        } else {
+        printf("passenger size : %d\n", (int)elevators[0].at("passengers").size());
+//        if ((int)calls.size()==0 && elevators[0].at("passengers").size()==0) {
+//            json::value command = makeJson(0, 0);  // stop
+//            json::value commands; commands[0] = command;
+//            json::value action; action["commands"]=commands;
+//            request_action.set_body(action);
+//        } else {
             string status = elevators[0].at("status").as_string().c_str();
             json::value command, commands, action;
-            bool is_passenger = (elevators[0].at("passengers").size()?true:false);
             if (status=="STOPPED") {    // stop, open, down, up
-                if (is_passenger) {
-                    if (elevators[0].at("passengers").at(0).at("end").as_integer()>elevators[0].at("floor").as_integer()) {
-                        command = makeJson(0, 1);  // up
-                    } else if (elevators[0].at("passengers").at(0).at("end").as_integer()<elevators[0].at("floor").as_integer()) {
-                        command = makeJson(0, 2);  // down
-                    } else
+                bool flag = false;
+                for (int i=0; i<calls.size(); i++) {
+                    if (calls[i].at("start").as_integer()==elevators[0].at("floor").as_integer() && elevators[0].at("passengers").size()<8) {
                         command = makeJson(0, 3);  // open
-                } else {
-                    if (calls[0].at("start").as_integer()>elevators[0].at("floor").as_integer()) {
-                        command = makeJson(0, 1);  // up
-                    } else if (calls[0].at("start").as_integer()<elevators[0].at("floor").as_integer()) {
-                        command = makeJson(0, 2);  // down
-                    } else
-                        command = makeJson(0, 3);  // open
+                        flag = true;
+                        break;
+                    }
+                }
+                
+                if (!flag) {
+                    for (int i=0; i<elevators[0].at("passengers").size(); i++) {
+                        if (elevators[0].at("passengers").at(i).at("end").as_integer()==elevators[0].at("floor").as_integer()) {
+                            command = makeJson(0,3);    // open
+                            flag = true;
+                            break;
+                        }
+                    }
+                }
+                
+                
+                
+                if (!flag) {
+                    if (elevators[0].at("floor").as_integer()==1) {
+                        command = makeJson(0, 1);   // up
+                        dir = 0;
+                    } else if (elevators[0].at("floor").as_integer()==25) {
+                        command = makeJson(0, 2);   // down
+                        dir = 1;
+                    } else {
+                        if (dir==0) command = makeJson(0, 1);   // up
+                        else command = makeJson(0, 2);  // down
+                    }
                 }
             } else if (status=="OPENED") {  // open, enter, exit, close
-                if (is_passenger) {
-                    if (elevators[0].at("passengers").at(0).at("end").as_integer()==elevators[0].at("floor").as_integer()) {
-                        int id = elevators[0].at("passengers").at(0).at("id").as_integer();
-                        command = makeJson(0, 6, id);  // exit
-                    } else
-                        command = makeJson(0, 4);  // close
-                } else {
-                    if (calls[0].at("start").as_integer()==elevators[0].at("floor").as_integer()) {
-                        int id = calls[0].at("id").as_integer();
-                        command = makeJson(0, 5, id);  // enter
-                    } else
-                        command = makeJson(0, 4);  // close
+                bool flag = false;
+                for (int i=0; i<calls.size(); i++) {
+                    if (calls[i].at("start").as_integer()==elevators[0].at("floor").as_integer() &&
+                        elevators[0].at("passengers").size()<8) {
+                        int id = calls[i].at("id").as_integer();
+                        command = makeJson(0,5,id);  // enter
+                        flag = true;
+                        break;
+                    }
+                }
+                
+                if (!flag) {
+                    for (int i=0; i<elevators[0].at("passengers").size(); i++) {
+                        if (elevators[0].at("passengers").at(i).at("end").as_integer()==elevators[0].at("floor").as_integer()) {
+                            int id = elevators[0].at("passengers").at(i).at("id").as_integer();
+                            command = makeJson(0,6,id); // exit
+                            flag = true;
+                            break;
+                        }
+                    }
+                }
+                
+                if (!flag) {
+                    command = makeJson(0, 4);    // close
                 }
             } else if (status=="UPWARD") {  // stop, up
-                if (is_passenger) {
-                    if (elevators[0].at("passengers").at(0).at("end").as_integer()==elevators[0].at("floor").as_integer()) {
+                bool flag = false;
+                for (int i=0; i<calls.size(); i++) {
+                    if (calls[i].at("start").as_integer()==elevators[0].at("floor").as_integer() &&
+                        elevators[0].at("passengers").size()<8) {
                         command = makeJson(0, 0);  // stop
-                    } else
+                        flag = true;
+                        break;
+                    }
+                }
+                
+                if (!flag) {
+                    for (int i=0; i<elevators[0].at("passengers").size(); i++) {
+                        if (elevators[0].at("passengers").at(i).at("end").as_integer()==elevators[0].at("floor").as_integer()) {
+                            command = makeJson(0, 0);  // stop
+                            flag = true;
+                            break;
+                        }
+                    }
+                }
+                
+                if (!flag) {
+                    if (elevators[0].at("floor").as_integer()!=25)
                         command = makeJson(0, 1);  // up
-                } else {
-                    if (calls[0].at("start").as_integer()==elevators[0].at("floor").as_integer()){
+                    else
                         command = makeJson(0, 0);  // stop
-                    } else
-                        command = makeJson(0, 1);  // up
                 }
             } else {    // stop, down
-                if (is_passenger) {
-                    if (elevators[0].at("passengers").at(0).at("end").as_integer()==elevators[0].at("floor").as_integer()) {
+                bool flag = false;
+                for (int i=0; i<calls.size(); i++) {
+                    if (calls[i].at("start").as_integer()==elevators[0].at("floor").as_integer() &&
+                        elevators[0].at("passengers").size()<8) {
                         command = makeJson(0, 0);  // stop
-                    } else
+                        flag = true;
+                        break;
+                    }
+                }
+                
+                if (!flag) {
+                    for (int i=0; i<elevators[0].at("passengers").size(); i++) {
+                        if (elevators[0].at("passengers").at(i).at("end").as_integer()==elevators[0].at("floor").as_integer()) {
+                            command = makeJson(0, 0);  // stop
+                            flag = true;
+                            break;
+                        }
+                    }
+                }
+                
+                if (!flag) {
+                    if (elevators[0].at("floor").as_integer()!=1)
                         command = makeJson(0, 2);  // down
-                } else {
-                    if (calls[0].at("start").as_integer()==elevators[0].at("floor").as_integer()){
-                        command = makeJson(0, 0);  // stop
-                    } else
-                        command = makeJson(0, 2);  // down
+                    else
+                        command = makeJson(0, 0);   //close
                 }
             }
             commands[0] = command;
             action["commands"]=commands;
             request_action.set_body(action);
             printf("status : %s / action : %s\n",status.c_str(),command.at("command").as_string().c_str());
-        }
+//        }
         
-//        printf("%d\n",client_action.request(request_action).get().status_code());
-        client_action.request(request_action).get();
+        printf("%d\n",client_action.request(request_action).get().status_code());
+//        client_action.request(request_action).get();
     }
 }
 
