@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "4750BED9-46A4-4974-B3BC-ED07189E4AA6"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "160B795C-D76D-42CD-9D0B-7955D44DD81C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "1949. &#x1103;&#x1173;&#x11bc;&#x1109;&#x1161;&#x11ab;&#x1105;&#x1169; &#x110c;&#x1169;&#x1109;&#x1165;&#x11bc;/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "main(argc, argv)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "160B795C-D76D-42CD-9D0B-7955D44DD81C - 8ef224244605ad32"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "1949. &#x1103;&#x1173;&#x11bc;&#x1109;&#x1161;&#x11ab;&#x1105;&#x1169; &#x110c;&#x1169;&#x1109;&#x1165;&#x11bc;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/carrot/Xcode/1949.%20%E1%84%83%E1%85%B3%E1%86%BC%E1%84%89%E1%85%A1%E1%86%AB%E1%84%85%E1%85%A9%20%E1%84%8C%E1%85%A9%E1%84%89%E1%85%A5%E1%86%BC/1949.%20%E1%84%83%E1%85%B3%E1%86%BC%E1%84%89%E1%85%A1%E1%86%AB%E1%84%85%E1%85%A9%20%E1%84%8C%E1%85%A9%E1%84%89%E1%85%A5%E1%86%BC/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "408">
+               </Location>
+               <Location
+                  uuid = "160B795C-D76D-42CD-9D0B-7955D44DD81C - 8ef224244605ad32"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "1949. &#x1103;&#x1173;&#x11bc;&#x1109;&#x1161;&#x11ab;&#x1105;&#x1169; &#x110c;&#x1169;&#x1109;&#x1165;&#x11bc;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/carrot/Xcode/1949.%20%E1%84%83%E1%85%B3%E1%86%BC%E1%84%89%E1%85%A1%E1%86%AB%E1%84%85%E1%85%A9%20%E1%84%8C%E1%85%A9%E1%84%89%E1%85%A5%E1%86%BC/1949.%20%E1%84%83%E1%85%B3%E1%86%BC%E1%84%89%E1%85%A1%E1%86%AB%E1%84%85%E1%85%A9%20%E1%84%8C%E1%85%A9%E1%84%89%E1%85%A5%E1%86%BC/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "430">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A1A579C9-9D85-4D70-98F5-A84F3C417BCF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "1949. &#x1103;&#x1173;&#x11bc;&#x1109;&#x1161;&#x11ab;&#x1105;&#x1169; &#x110c;&#x1169;&#x1109;&#x1165;&#x11bc;/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "dfs(r, c, br, bc, usage, ant)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1DF563C1-A9D1-49C7-AC68-52829CFB8C96"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "1949. &#x1103;&#x1173;&#x11bc;&#x1109;&#x1161;&#x11ab;&#x1105;&#x1169; &#x110c;&#x1169;&#x1109;&#x1165;&#x11bc;/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "dfs(r, c, br, bc, usage, ant)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A84ED4A2-F42D-452B-81A9-DF1B9240A891"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "1949. &#x1103;&#x1173;&#x11bc;&#x1109;&#x1161;&#x11ab;&#x1105;&#x1169; &#x110c;&#x1169;&#x1109;&#x1165;&#x11bc;/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "dfs(r, c, br, bc, usage, ant)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
